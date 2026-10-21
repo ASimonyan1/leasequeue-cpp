@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="280" viewBox="0 0 1200 280" role="img" aria-label="LeaseQueue — Fenced leases · Recovery · Concurrency">
+<defs><pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M40 0H0V40" fill="none" stroke="#fff" stroke-opacity=".045"/></pattern><linearGradient id="bg" x2="1" y2="1"><stop stop-color="#101c30"/><stop offset="1" stop-color="#162b43"/></linearGradient></defs>
+<rect width="1200" height="280" rx="24" fill="url(#bg)"/><rect width="1200" height="280" rx="24" fill="url(#grid)"/>
+<rect x="50" y="46" width="30" height="4" rx="2" fill="#ffb98b"/>
+<text x="94" y="54" fill="#ffb98b" font-family="Arial,sans-serif" font-size="15" font-weight="700" letter-spacing="3">02 / C++ SYSTEMS</text>
+<text x="48" y="139" fill="#f3f5f0" font-family="Arial,sans-serif" font-size="54" font-weight="700" letter-spacing="-2">LeaseQueue</text>
+<text x="51" y="184" fill="#acbdd0" font-family="Arial,sans-serif" font-size="21">Fenced leases · Recovery · Concurrency</text>
+<path d="M52 232H770" stroke="#34465b"/>
+<text x="52" y="257" fill="#8da3b8" font-family="Arial,sans-serif" font-size="12" letter-spacing="2">ASIMONYAN1  /  ENGINEERING PORTFOLIO</text>
+<g transform="translate(880 70.0)" fill="none" stroke-width="2">
+<path d="M0 30L95 0L190 45L95 80Z" stroke="#ffb98b" fill="#ffb98b" fill-opacity=".09"/>
+<path d="M0 70L95 40L190 85L95 120Z" stroke="#7d9bc1"/>
+<path d="M0 110L95 80L190 125L95 160Z" stroke="#456281"/>
+<path d="M0 30V110M190 45V125M95 80V160" stroke="#456281" stroke-dasharray="4 5"/>
+<circle cx="95" cy="0" r="5" fill="#ffb98b" stroke="none"/><circle cx="190" cy="85" r="4" fill="#7d9bc1" stroke="none"/>
+</g></svg>
