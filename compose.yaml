@@ -1,0 +1,12 @@
+services:
+  queue:
+    build: .
+    environment:
+      API_TOKEN: ${API_TOKEN:?Set API_TOKEN in .env}
+    volumes:
+      - queue-data:/data
+    ports:
+      - "127.0.0.1:8081:8081"
+    stop_grace_period: 15s
+volumes:
+  queue-data:

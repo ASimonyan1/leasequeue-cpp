@@ -1,5 +1,5 @@
 name: C++ contracts
-on: [push, pull_request]
+on: [push, pull_request, workflow_dispatch]
 permissions:
   contents: read
 jobs:
@@ -27,3 +27,18 @@ jobs:
       - run: cmake -S . -B build -DCMAKE_BUILD_TYPE=Debug -DENABLE_SANITIZERS=ON
       - run: cmake --build build --parallel 2
       - run: ctest --test-dir build --output-on-failure
+  compose:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: cp .env.example .env
+      - run: docker compose up --build -d
+      - name: Probe HTTP and persistent volume restart
+        run: |
+          curl --fail --retry 40 --retry-all-errors --retry-delay 2 http://127.0.0.1:8081/health
+          curl --fail -H 'Authorization: Bearer local-queue-token-change-me' -H 'Content-Type: application/json' -d '{"key":"compose-test","payload":"hello","max_attempts":3}' http://127.0.0.1:8081/v1/jobs
+          docker compose restart
+          curl --fail --retry 40 --retry-all-errors --retry-delay 2 http://127.0.0.1:8081/health
+          curl --fail -H 'Authorization: Bearer local-queue-token-change-me' http://127.0.0.1:8081/v1/jobs/1 | python3 -c 'import sys,json; j=json.load(sys.stdin); assert j["payload"]=="hello" and j["status"]=="ready"'
+      - if: always()
+        run: docker compose logs && docker compose down -v

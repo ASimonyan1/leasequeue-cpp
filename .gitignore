@@ -3,3 +3,6 @@ build*/
 *.lock/
 .idea/
 .vscode/
+.env
+__pycache__/
+*.log
