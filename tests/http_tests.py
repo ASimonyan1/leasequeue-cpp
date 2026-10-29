@@ -53,11 +53,14 @@ class HttpContracts(unittest.TestCase):
                 self.process.kill()
                 self.process.wait()
             self.output.close()
+            returncode = self.process.returncode
             self.process = None
             # Only our own test lock, after wait confirmed process exit.
             lock = Path(str(self.journal) + ".lock")
             if lock.exists():
                 lock.rmdir()
+            if os.name != "nt" and not force and returncode != 0:
+                raise RuntimeError("Server shutdown/sanitizer failure: " + self.log.read_text())
 
     def tearDown(self):
         self.stop()
